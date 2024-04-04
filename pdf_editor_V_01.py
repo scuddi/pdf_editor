@@ -8,6 +8,8 @@ reports_dir = (
     Path.home()
     / "OneDrive"
     / "Desktop"
+    / "Programmieren"
+    / "PDF-Merger"
 )
 
 for path in reports_dir.glob("*pdf"):
