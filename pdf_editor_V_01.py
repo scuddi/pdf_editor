@@ -9,7 +9,7 @@ reports_dir = (
     / "OneDrive"
     / "Desktop"
     / "Programmieren"
-    / "PDF-Merger"
+    / "PDF-Editor"
 )
 
 for path in reports_dir.glob("*pdf"):
