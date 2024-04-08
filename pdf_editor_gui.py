@@ -18,11 +18,12 @@ app.title("PDF Editor by KS")
 
 tabs_button = customtkinter.CTkSegmentedButton(master = app, values = ["Startseite", "PDF-Merger", "PDF-Snipping", "PDF-Converter"],
                                                width = 580,
-                                               #command = main_function)
+                                               #command = main_function
+                                               )
 tabs_button.set("Startseite")
 
 
-main_frame = customtkinter.CTkFrame(master=app, width = 580, height = 430)
+main_frame = customtkinter.CTkFrame(master = app, width = 580, height = 430)
 
 # Startseite - Hinweis
 
