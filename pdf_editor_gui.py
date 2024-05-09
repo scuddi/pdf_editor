@@ -14,19 +14,30 @@ app.title("PDF Editor by KS")
 
 tab_values = ["Startseite", "PDF-Merger", "PDF-Snipping", "PDF-Converter"]
 
-main_frame = tab_values
-
 # main function for buttons to load content into main_frame
+
+current_frame = None
+starting_frame = None
+merger_frame = None
+
 def tab_click(button_value):
     print(button_value)
     if button_value == "Startseite":
-        return main_frame == starting_frame
+        current_frame = starting_frame_set()
     elif button_value == "PDF-Merger":
-        return main_frame == merger_frame
+        current_frame = pdf_merger_frame()
+
+def starting_frame_set():
+    starting_frame.grid(row = 1, column = 0, columnspan = 2, padx = 10, sticky = "ew")
+
+def pdf_merger_frame():
+    merger_frame.grid(row = 1, column = 0, columnspan = 2, padx = 10, sticky = "ew")
+
 
 # navigation bar / tab bar
 
-tabs_button = customtkinter.CTkSegmentedButton(master = app, values = tab_values,
+tabs_button = customtkinter.CTkSegmentedButton(master = app,
+                                               values = tab_values,
                                                width = 580,
                                                command = tab_click
                                                )
@@ -50,6 +61,11 @@ hinweis = customtkinter.CTkLabel(master = starting_frame,
 
 merger_frame = customtkinter.CTkFrame(master = app, width = 580, height = 430)
 
+merger_message = customtkinter.CTkLabel(master = merger_frame,
+                                        width = 560,
+                                        height = 200,
+                                        text = "Hier können PDFs zusammengefügt werden."
+                                        )
 
 # define grid
 
@@ -61,6 +77,7 @@ app.rowconfigure((0,1), weight = 0)
 tabs_button.grid(row = 0, column = 0, columnspan = 2, padx = 10, pady= 10, sticky = "new")
 starting_frame.grid(row = 1, column = 0, columnspan = 2, padx = 10, sticky = "ew")
 hinweis.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 15, sticky = "nsew")
+#merger_frame.grid(row = 1, column = 0, columnspan = 2, padx = 10, sticky = "ew")
+merger_message.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 15, sticky = "nsew")
 
-# merger_frame.grid(row = 1, column = 0, columnspan = 2, padx = 10, sticky = "ew")
 app.mainloop()
