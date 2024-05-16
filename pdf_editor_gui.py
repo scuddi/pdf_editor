@@ -80,9 +80,68 @@ merger_frame = customtkinter.CTkFrame(master = app, width = 580, height = 430)
 
 merger_message = customtkinter.CTkLabel(master = merger_frame,
                                         width = 560,
-                                        height = 200,
+                                        height = 10,
                                         text = "Hier können PDFs zusammengefügt werden."
                                         )
+
+check_files_messages = customtkinter.CTkLabel(master = merger_frame,
+                                              width = 250,
+                                              height = 5,
+                                              text = "In welchem Dateipfad befinden sich PDFs zum mergen? :")
+
+check_files_file_path = customtkinter.CTkEntry(master = merger_frame,
+                                               width = 560,
+                                               height = 10,
+                                               placeholder_text = "Dateipfad, in dem vorhandene PDFS angezeigt werden sollen.")
+
+show_files_in_file_path = customtkinter.CTkLabel(master = merger_frame,
+                                                 width = 560,
+                                                 height = 30,
+                                                 text = "DAS HIER IST EIN PLATZHALTER, WO DIE VORHANDENEN PDFS ANGEZEIGT WERDEN SOLLEN",
+                                                 fg_color = "red")
+
+first_pdf_file_path = customtkinter.CTkLabel(master = merger_frame,
+                                             width = 250,
+                                             height = 5,
+                                             text = "Dateipfad des ersten PDFs:                                           ")
+
+# warum auch immer wird hier first_pdf_file_path nicht linksbündig eingesetzt, außer der Text ist länger. Deswegen die vielen Leerzeichen
+
+first_pdf_file_path_entry = customtkinter.CTkEntry(master = merger_frame,
+                                                   width = 560,
+                                                   height = 10,
+                                                   placeholder_text = "Dateipfad des ersten PDFs hier eingeben")
+
+second_pdf_file_path = customtkinter.CTkLabel(master = merger_frame,
+                                              width = 250,
+                                              height = 5,
+                                              text = "Dateipfad des zweiten PDFs:                                           ")
+
+second_pdf_file_path_entry = customtkinter.CTkEntry(master = merger_frame,
+                                                    width = 560,
+                                                    height = 10,
+                                                    placeholder_text = "Dateipfad des zweiten PDFs hier eingeben")
+
+saving_file_path = customtkinter.CTkLabel(master = merger_frame,
+                                          width = 250,
+                                          height = 5,
+                                          text = "Wo soll das zusammengefügte PDF gespeichert werden? :"
+                                          )
+
+saving_file_path_entry = customtkinter.CTkEntry(master = merger_frame,
+                                                width = 560,
+                                                height = 10,
+                                                placeholder_text = "Hier den gewünschten Speicherort (als Dateipfad) eintragen")
+
+name_of_merged_pdf = customtkinter.CTkLabel(master = merger_frame,
+                                            width = 250,
+                                            height = 5,
+                                            text = "Wie soll das zusammengefügte neue PDF heißen? ")
+
+name_of_merged_pdf_entry = customtkinter.CTkEntry(master = merger_frame,
+                                                  width = 560,
+                                                  height = 5,
+                                                  placeholder_text = "Hier den gewünschten Namen eingeben")
 
 # snipping frame
 
@@ -114,7 +173,23 @@ app.rowconfigure((0,1), weight = 0)
 tabs_button.grid(row = 0, column = 0, columnspan = 2, padx = 10, pady= 10, sticky = "new")
 starting_frame.grid(row = 1, column = 0, columnspan = 2, padx = 10, sticky = "ew")
 hinweis.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 15, sticky = "nsew")
+
+# grid in merger frame / merger tab
+
 merger_message.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 15, sticky = "nsew")
+check_files_messages.grid(row = 2, column = 0, columnspan = 1, padx = 10, pady = 10, sticky = "nw")
+check_files_file_path.grid(row = 3, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
+show_files_in_file_path.grid(row = 4, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
+first_pdf_file_path.grid(row = 5, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
+first_pdf_file_path_entry.grid(row = 6, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
+second_pdf_file_path.grid(row = 7, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nw")
+second_pdf_file_path_entry.grid(row = 8, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
+saving_file_path.grid(row = 9, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nw")
+saving_file_path_entry.grid(row = 10, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
+name_of_merged_pdf.grid(row = 11, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nw")
+name_of_merged_pdf_entry.grid(row = 12, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nw")
+
+
 snipping_message.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 15, sticky = "nsew")
 converter_message.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 15, sticky = "nsew")
 
