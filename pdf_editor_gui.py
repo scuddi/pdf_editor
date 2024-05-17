@@ -1,4 +1,19 @@
 import customtkinter
+import os
+import io
+from PyPDF2 import PdfReader, PdfMerger
+
+found_pdf_files = []
+
+def find_pdfs():
+
+    directory = check_files_file_path.get()
+    for filename in os.listdir(directory):
+        if filename.endswith(".pdf"):
+            found_pdf_files.append(os.path.join(directory, filename))
+
+    show_files_in_file_path.configure(text = found_pdf_files)
+    return found_pdf_files
 
 # general appearance of window
 
@@ -88,18 +103,20 @@ check_files_messages = customtkinter.CTkLabel(master = merger_frame,
                                               height = 5,
                                               text = "In welchem Dateipfad befinden sich PDFs zum mergen? :")
 
-check_files_button = customtkinter.CTkButton(master = merger_frame,
-                                             text = "PDFs anzeigen")
-
 check_files_file_path = customtkinter.CTkEntry(master = merger_frame,
                                                width = 560,
                                                height = 10,
                                                placeholder_text = "Dateipfad, in dem vorhandene PDFS angezeigt werden sollen.")
 
+check_files_button = customtkinter.CTkButton(master = merger_frame,
+                                             text = "PDFs anzeigen",
+                                             command = find_pdfs
+                                             )
+
 show_files_in_file_path = customtkinter.CTkLabel(master = merger_frame,
                                                  width = 560,
                                                  height = 30,
-                                                 text = "DAS HIER IST EIN PLATZHALTER, WO DIE VORHANDENEN PDFS ANGEZEIGT WERDEN SOLLEN",
+                                                 text = found_pdf_files,
                                                  fg_color = "blue")
 
 first_pdf_file_path = customtkinter.CTkLabel(master = merger_frame,
