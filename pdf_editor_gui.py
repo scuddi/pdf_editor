@@ -7,7 +7,7 @@ customtkinter.set_default_color_theme("dark-blue")
 
 app = customtkinter.CTk()
 
-app.geometry("600x500")
+app.geometry("600x520")
 app.title("PDF Editor by KS")
 
 # main function for buttons to load content into main_frame
@@ -17,7 +17,6 @@ tab_values = ["Startseite", "PDF-Merger", "PDF-Snipping", "PDF-Converter"]
 # main function for buttons to load content into main_frame
 
 def tab_click(button_value):
-    print(button_value)
     if button_value == "Startseite":
         starting_frame_set()
     elif button_value == "PDF-Merger":
@@ -62,11 +61,11 @@ tabs_button.set("Startseite")
 
 # Startseite - Hinweis
 
-starting_frame = customtkinter.CTkFrame(master = app, width = 580, height = 430)
+starting_frame = customtkinter.CTkFrame(master = app, width = 580, height = 440)
 
 hinweis = customtkinter.CTkLabel(master = starting_frame,
                                  width = 560,
-                                 height = 410,
+                                 height = 430,
                                  text = "Wilkommen in meinem PDF-Editor\n\n"
                                         "Hier entstehen verschiedene Funktionen eines PDF-Editors.\n\n"
                                         "Die verschiedenen Funktionen sind/werden sein: \n\n"
@@ -89,6 +88,9 @@ check_files_messages = customtkinter.CTkLabel(master = merger_frame,
                                               height = 5,
                                               text = "In welchem Dateipfad befinden sich PDFs zum mergen? :")
 
+check_files_button = customtkinter.CTkButton(master = merger_frame,
+                                             text = "PDFs anzeigen")
+
 check_files_file_path = customtkinter.CTkEntry(master = merger_frame,
                                                width = 560,
                                                height = 10,
@@ -98,7 +100,7 @@ show_files_in_file_path = customtkinter.CTkLabel(master = merger_frame,
                                                  width = 560,
                                                  height = 30,
                                                  text = "DAS HIER IST EIN PLATZHALTER, WO DIE VORHANDENEN PDFS ANGEZEIGT WERDEN SOLLEN",
-                                                 fg_color = "red")
+                                                 fg_color = "blue")
 
 first_pdf_file_path = customtkinter.CTkLabel(master = merger_frame,
                                              width = 250,
@@ -143,6 +145,18 @@ name_of_merged_pdf_entry = customtkinter.CTkEntry(master = merger_frame,
                                                   height = 5,
                                                   placeholder_text = "Hier den gewünschten Namen eingeben")
 
+merge_button = customtkinter.CTkButton(master = merger_frame,
+                                       text = "Merge",
+                                       width = 200,
+                                       #command = TBD
+                                       )
+
+merged_message = customtkinter.CTkLabel(master = merger_frame,
+                                        width = 200,
+                                        height = 20,
+                                        text = "Hier kommt die Erfolgsmeldung",
+                                        fg_color = "blue")
+
 # snipping frame
 
 snipping_frame = customtkinter.CTkFrame(master = app, width = 580, height = 430)
@@ -177,9 +191,10 @@ hinweis.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 15, sticky =
 # grid in merger frame / merger tab
 
 merger_message.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 15, sticky = "nsew")
-check_files_messages.grid(row = 2, column = 0, columnspan = 1, padx = 10, pady = 10, sticky = "nw")
+check_files_messages.grid(row = 2, column = 0, columnspan = 1, padx = 10, pady = 8, sticky = "nw")
+check_files_button.grid(row = 2, column = 1, columnspan = 1, padx = 25, pady = 2, sticky = "nw")
 check_files_file_path.grid(row = 3, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
-show_files_in_file_path.grid(row = 4, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
+show_files_in_file_path.grid(row = 4, column = 0, columnspan = 2, padx = 10, pady = 8, sticky = "nw")
 first_pdf_file_path.grid(row = 5, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
 first_pdf_file_path_entry.grid(row = 6, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
 second_pdf_file_path.grid(row = 7, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nw")
@@ -187,8 +202,9 @@ second_pdf_file_path_entry.grid(row = 8, column = 0, columnspan = 2, padx = 10, 
 saving_file_path.grid(row = 9, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nw")
 saving_file_path_entry.grid(row = 10, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
 name_of_merged_pdf.grid(row = 11, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nw")
-name_of_merged_pdf_entry.grid(row = 12, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nw")
-
+name_of_merged_pdf_entry.grid(row = 12, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
+merge_button.grid(row = 13, column = 0, columnspan = 1, padx = 10, pady = 10, sticky = "nsew")
+merged_message.grid(row = 13, column = 1, columnspan = 1, padx = 10, pady = 10, sticky = "nsew")
 
 snipping_message.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 15, sticky = "nsew")
 converter_message.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 15, sticky = "nsew")
