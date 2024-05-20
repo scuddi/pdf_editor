@@ -3,6 +3,8 @@ import os
 import io
 from PyPDF2 import PdfReader, PdfMerger
 
+# functions and variables for the merger
+
 found_pdf_files = []
 pdf1_path = []
 pdf2_path = []
@@ -42,6 +44,7 @@ def merge_pdfs():
     with open(save_location, "wb") as f:
         pdf_merger.write(f)
 
+# GUI
 # general appearance of window
 
 customtkinter.set_appearance_mode("dark")
@@ -144,7 +147,9 @@ show_files_in_file_path = customtkinter.CTkLabel(master = merger_frame,
                                                  width = 560,
                                                  height = 30,
                                                  text = found_pdf_files,
-                                                 fg_color = "blue")
+                                                 fg_color = "grey",
+                                                 corner_radius = 10,
+                                                 text_color = "black")
 
 first_pdf_file_path = customtkinter.CTkLabel(master = merger_frame,
                                              width = 250,
@@ -195,12 +200,6 @@ merge_button = customtkinter.CTkButton(master = merger_frame,
                                        command = merge_pdfs
                                        )
 
-merged_message = customtkinter.CTkLabel(master = merger_frame,
-                                        width = 200,
-                                        height = 20,
-                                        text = "Hier kommt die Erfolgsmeldung",
-                                        fg_color = "blue")
-
 # snipping frame
 
 snipping_frame = customtkinter.CTkFrame(master = app, width = 580, height = 430)
@@ -247,8 +246,7 @@ saving_file_path.grid(row = 9, column = 0, columnspan = 2, padx = 10, pady = 10,
 saving_file_path_entry.grid(row = 10, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
 name_of_merged_pdf.grid(row = 11, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nw")
 name_of_merged_pdf_entry.grid(row = 12, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
-merge_button.grid(row = 13, column = 0, columnspan = 1, padx = 10, pady = 10, sticky = "nsew")
-merged_message.grid(row = 13, column = 1, columnspan = 1, padx = 10, pady = 10, sticky = "nsew")
+merge_button.grid(row = 13, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nsew")
 
 snipping_message.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 15, sticky = "nsew")
 converter_message.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 15, sticky = "nsew")
