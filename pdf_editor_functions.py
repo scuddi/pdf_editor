@@ -27,9 +27,7 @@ def merge_pdfs(pdf_file_list, target_directory, master_file_name):
     with open(save_location, "wb") as f:
         pdf_merger.write(f)
 
-"""
-pdf1_path = input("Erstes PDF File: ")
-pdf2_path = input("Zweites PDF File: ")
+
 pdf_file_list = [pdf1_path, pdf2_path]
 target_directory = input("Wo soll das PDF gespeichert werdern? ")
 master_file_name = input("Wie soll das zusammengefügte PDF heißen? ")

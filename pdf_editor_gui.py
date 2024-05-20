@@ -4,6 +4,11 @@ import io
 from PyPDF2 import PdfReader, PdfMerger
 
 found_pdf_files = []
+pdf1_path = []
+pdf2_path = []
+pdf_file_list = []
+target_directory = ""
+master_file_name = ""
 
 def find_pdfs():
 
@@ -14,6 +19,28 @@ def find_pdfs():
 
     show_files_in_file_path.configure(text = found_pdf_files)
     return found_pdf_files
+
+def merge_pdfs():
+
+
+    pdf_merger = PdfMerger()
+
+    pdf1_path = first_pdf_file_path_entry.get()
+    pdf2_path = second_pdf_file_path_entry.get()
+
+    pdf_file_list = [pdf1_path, pdf2_path]
+    target_directory = saving_file_path_entry.get()
+    master_file_name = name_of_merged_pdf_entry.get()
+
+
+    for pdf_file in pdf_file_list:
+        with open(pdf_file, "rb") as f:
+            pdf_reader = PdfReader(f)
+            pdf_merger.append(pdf_reader)
+
+    save_location = os.path.join(target_directory, master_file_name)
+    with open(save_location, "wb") as f:
+        pdf_merger.write(f)
 
 # general appearance of window
 
@@ -165,7 +192,7 @@ name_of_merged_pdf_entry = customtkinter.CTkEntry(master = merger_frame,
 merge_button = customtkinter.CTkButton(master = merger_frame,
                                        text = "Merge",
                                        width = 200,
-                                       #command = TBD
+                                       command = merge_pdfs
                                        )
 
 merged_message = customtkinter.CTkLabel(master = merger_frame,
