@@ -44,6 +44,11 @@ def merge_pdfs():
     with open(save_location, "wb") as f:
         pdf_merger.write(f)
 
+# functions for the snipping part
+
+# functions for the converting part
+
+
 # GUI
 # general appearance of window
 
@@ -142,6 +147,10 @@ check_files_button = customtkinter.CTkButton(master = merger_frame,
                                              text = "PDFs anzeigen",
                                              command = find_pdfs
                                              )
+
+show_files_scrollable_frame = customtkinter.CTkScrollableFrame(master = merger_frame,
+                                                               width = 540,
+                                                               height = 100)
 
 show_files_in_file_path = customtkinter.CTkLabel(master = merger_frame,
                                                  width = 560,
