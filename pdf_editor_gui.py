@@ -1,6 +1,6 @@
 import customtkinter
 import os
-import io
+# import io
 from PyPDF2 import PdfReader, PdfMerger
 
 # functions and variables for the merger
@@ -45,6 +45,7 @@ def merge_pdfs():
         pdf_merger.write(f)
 
 # functions for the snipping part
+
 
 # functions for the converting part
 
@@ -215,19 +216,72 @@ snipping_frame = customtkinter.CTkFrame(master = app, width = 580, height = 430)
 
 snipping_message = customtkinter.CTkLabel(master = snipping_frame,
                                           width = 560,
-                                          height = 200,
+                                          height = 10,
                                           text = "Hier können einzelne Seiten aus PDFs entfernt werden."
                                           )
 
+pdf_snipping_path = customtkinter.CTkLabel(master = snipping_frame,
+                                           width = 250,
+                                           height = 5,
+                                           text = "Dateipfad von gewünschten PDF einfügen: ")
+
+pdf_snipping_path_entry = customtkinter.CTkEntry(master = snipping_frame,
+                                                 width = 540,
+                                                 height = 5,
+                                                 placeholder_text = "Pfad des PDFs")
+
+snipping_pages_label = customtkinter.CTkLabel(master = snipping_frame,
+                                              width = 250,
+                                              height = 10,
+                                              text = "Nennen Sie die Sieten, die bestehen bleiben sollen: ")
+
+snipping_pages_label_entry = customtkinter.CTkEntry(master = snipping_frame,
+                                                    width = 540,
+                                                    height = 5,
+                                                    placeholder_text= "Hier zu erhaltene Seiten nennen, bspw. : 3-12")
+
+pdf_snipping_button = customtkinter.CTkButton(master = snipping_frame,
+                                              width = 200,
+                                              height = 40,
+                                              text = "PDF zuschneiden",
+                                              # command = pdf_snip
+                                              )
 # converter frame
 
 converter_frame = customtkinter.CTkFrame(master = app, width = 580, height = 430)
 
 converter_message = customtkinter.CTkLabel(master = converter_frame,
                                            width = 560,
-                                           height = 200,
+                                           height = 40,
                                            text = "Hier können Sie (Word-) Dateien in PDFs umwandeln."
                                            )
+
+pdf_to_convert_path = customtkinter.CTkLabel(master = converter_frame,
+                                             width = 250,
+                                             height = 10,
+                                             text = "Geben Sie hier den Dateipfad des zu konvertierenden Word Dokuments an an:")
+
+pdf_to_convert_path_entry = customtkinter.CTkEntry(master = converter_frame,
+                                                   width = 560,
+                                                   height = 5,
+                                                   placeholder_text = "Hier Dateipfad des Word-Dokuments einfügen")
+
+pdf_converter_saving_path = customtkinter.CTkLabel(master = converter_frame,
+                                                   width = 250,
+                                                   height = 10,
+                                                   text = "Dateipfad des gewünschten Speicherorts")
+
+pdf_converter_saving_path_entry = customtkinter.CTkEntry(master = converter_frame,
+                                                         width = 560,
+                                                         height = 5,
+                                                         placeholder_text = "Hier Dateipfad des gewünschten Speicherorts eingeben")
+
+pdf_convert_button = customtkinter.CTkButton(master = converter_frame,
+                                             width = 200,
+                                             height = 40,
+                                             text = "PDF konvertieren",
+                                             #command = pdf_convert
+                                             )
 
 # define grid
 
@@ -257,7 +311,18 @@ name_of_merged_pdf.grid(row = 11, column = 0, columnspan = 2, padx = 10, pady = 
 name_of_merged_pdf_entry.grid(row = 12, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
 merge_button.grid(row = 13, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nsew")
 
-snipping_message.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 15, sticky = "nsew")
+snipping_message.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nw")
+pdf_snipping_path.grid(row = 2, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nw")
+pdf_snipping_path_entry.grid(row = 3, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
+snipping_pages_label.grid(row = 4, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nw")
+snipping_pages_label_entry.grid(row = 5, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
+pdf_snipping_button.grid(row = 6, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nsew")
+
 converter_message.grid(row = 1, column = 0, columnspan = 2, padx = 10, pady = 15, sticky = "nsew")
+pdf_to_convert_path.grid(row = 2, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nw")
+pdf_to_convert_path_entry.grid(row = 3, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
+pdf_converter_saving_path.grid(row = 4, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nw")
+pdf_converter_saving_path_entry.grid(row = 5, column = 0, columnspan = 2, padx = 10, pady = 5, sticky = "nw")
+pdf_convert_button.grid(row = 6, column = 0, columnspan = 2, padx = 10, pady = 10, sticky = "nsew")
 
 app.mainloop()
